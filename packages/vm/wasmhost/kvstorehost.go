@@ -38,7 +38,7 @@ const (
 const KeyFromBytes int32 = 0x4000
 
 var (
-	HostTracing         = false
+	HostTracing         = true
 	ExtendedHostTracing = false
 )
 

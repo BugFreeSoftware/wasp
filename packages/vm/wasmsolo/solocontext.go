@@ -24,9 +24,9 @@ import (
 )
 
 const (
-	Debug      = false
+	Debug      = true
 	StackTrace = false
-	TraceHost  = false
+	TraceHost  = true
 )
 
 type SoloContext struct {
