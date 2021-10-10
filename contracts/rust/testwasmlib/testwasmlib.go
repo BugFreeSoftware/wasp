@@ -7,6 +7,7 @@ import (
 	"bytes"
 
 	"github.com/iotaledger/wasp/packages/vm/wasmlib"
+	"github.com/iotaledger/wasp/packages/vm/wasmlib/corecontracts/coreaccounts"
 	"github.com/iotaledger/wasp/packages/vm/wasmlib/corecontracts/coreblocklog"
 )
 
@@ -106,4 +107,14 @@ func viewArrayValue(ctx wasmlib.ScViewContext, f *ArrayValueContext) {
 
 func viewIotaBalance(ctx wasmlib.ScViewContext, f *IotaBalanceContext) {
 	f.Results.Iotas().SetValue(ctx.Balances().Balance(wasmlib.IOTA))
+}
+
+//nolint:deadcode,unused
+func dummy(ctx wasmlib.ScViewContext) {
+	agentID := ctx.AccountID()
+	b := coreaccounts.ScFuncs.Balance(ctx)
+	b.Params.AgentID().SetValue(agentID)
+	b.Func.Call()
+	balances := b.Results.Balances()
+	_ = balances
 }
