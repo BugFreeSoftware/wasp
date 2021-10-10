@@ -35,7 +35,9 @@ examples:
     defaultValue="solo"
     values={[
         {label: 'Solo', value: 'solo'},
+        {label: 'Solo (ISCP)', value: 'soloctx'},
         {label: 'Rust (ISCP)', value: 'rust'},
+        {label: 'Go (ISCP)', value: 'go'},
     ]}>
 <TabItem value="solo">
 
@@ -44,14 +46,33 @@ balances := chain.GetAccountBalance(agentID)
 ```
 
 </TabItem>
+<TabItem value="soloctx">
+
+```go
+b := coreaccounts.ScFuncs.Balance(ctx)
+b.Params.AgentID().SetValue(agentID)
+b.Func.Call()
+balances := b.Results.Balances()
+```
+
+</TabItem>
 <TabItem value="rust">
 
 ```rust
-// TODO does this work?
-let parms = ScMutableMap::new();
-parms.get_int64("a").set_value(AGENT_ID)
-let ret = ctx.call(ScHname::new("accounts"), ScHname::new("balance"), Some(params), None);
-let balances = ret.get_map(&KEY_BALANCES).immutable()
+let b = coreaccounts::ScFuncs::balance(ctx);
+b.params.agent_id().set_value(&agentID);
+b.func.call();
+let balances = b.results.balances();
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+b := coreaccounts.ScFuncs.Balance(ctx)
+b.Params.AgentID().SetValue(agentID)
+b.Func.Call()
+balances := b.Results.Balances()
 ```
 
 </TabItem>
