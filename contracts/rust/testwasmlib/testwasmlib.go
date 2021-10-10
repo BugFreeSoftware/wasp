@@ -117,4 +117,10 @@ func dummy(ctx wasmlib.ScViewContext) {
 	b.Func.Call()
 	balances := b.Results.Balances()
 	_ = balances
+
+	n := coreaccounts.ScFuncs.GetAccountNonce(ctx)
+	n.Params.AgentID().SetValue(agentID)
+	n.Func.Call()
+	nonce := n.Results.AccountNonce().Value()
+	_ = nonce
 }
