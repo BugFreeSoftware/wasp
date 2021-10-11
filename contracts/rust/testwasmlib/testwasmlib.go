@@ -112,8 +112,7 @@ func viewIotaBalance(ctx wasmlib.ScViewContext, f *IotaBalanceContext) {
 //nolint:deadcode,unused
 func dummy(ctx wasmlib.ScViewContext) {
 	agentID := ctx.AccountID()
-	b := coreaccounts.ScFuncs.Balance(ctx)
-	b.Params.AgentID().SetValue(agentID)
+	b := coreaccounts.ScFuncs.TotalAssets(ctx)
 	b.Func.Call()
 	balances := b.Results.Balances()
 	_ = balances
@@ -123,4 +122,9 @@ func dummy(ctx wasmlib.ScViewContext) {
 	n.Func.Call()
 	nonce := n.Results.AccountNonce().Value()
 	_ = nonce
+
+	a := coreaccounts.ScFuncs.Accounts(ctx)
+	a.Func.Call()
+	accounts := a.Results.Agents()
+	_ = accounts
 }
