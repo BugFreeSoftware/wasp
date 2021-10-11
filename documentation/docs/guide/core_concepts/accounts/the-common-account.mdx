@@ -37,6 +37,7 @@ parameters:
 ```go
 req := solo.NewCallParams(accounts.Contract.Name, accounts.FuncHarvest.Name)
 _, err := chain.PostRequestSync(req.WithIotas(1), wallet)
+require.NoError(t, err)
 ```
 
 </TabItem>
@@ -45,6 +46,7 @@ _, err := chain.PostRequestSync(req.WithIotas(1), wallet)
 ```go
 w := coreaccounts.ScFuncs.Harvest(ctx.Sign(wallet))
 w.Func.TransferIotas(1).PostToChain(chainID)
+require.NoError(t, ctx.Err)
 ```
 
 </TabItem>

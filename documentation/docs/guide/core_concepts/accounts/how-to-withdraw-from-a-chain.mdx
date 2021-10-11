@@ -32,6 +32,7 @@ The `withdraw` endpoint sends funds owned by the callee to their L1 address.
 // withdraw from chain to wallet
 req := solo.NewCallParams(accounts.Contract.Name, accounts.FuncWithdraw.Name)
 _, err := chain.PostRequestSync(req.WithIotas(1), wallet)
+require.NoError(t, err)
 ```
 
 </TabItem>
@@ -41,6 +42,7 @@ _, err := chain.PostRequestSync(req.WithIotas(1), wallet)
 // withdraw from chain *chainID* to wallet
 w := coreaccounts.ScFuncs.Withdraw(ctx.Sign(wallet))
 w.Func.TransferIotas(1).PostToChain(chainID)
+require.NoError(t, ctx.Err)
 ```
 
 </TabItem>
