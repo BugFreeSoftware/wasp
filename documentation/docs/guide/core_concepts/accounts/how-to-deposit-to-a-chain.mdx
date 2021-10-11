@@ -31,6 +31,7 @@ The `deposit` entrypoint credits the transferred IOTAS into your on-chain accoun
 // deposits N iotas from wallet into chain
 req := solo.NewCallParams(accounts.Contract.Name, accounts.FuncDeposit.Name)
 _, err := chain.PostRequestSync(req.WithIotas(N), wallet)
+require.NoError(t, err)
 ```
 
 </TabItem>
@@ -40,6 +41,7 @@ _, err := chain.PostRequestSync(req.WithIotas(N), wallet)
 // deposits N iotas from wallet into chain *chainID*
 d := coreaccounts.ScFuncs.Deposit(ctx.Sign(wallet))
 d.Func.TransferIotas(N).PostToChain(chainID)
+require.NoError(t, ctx.Err)
 ```
 
 </TabItem>
