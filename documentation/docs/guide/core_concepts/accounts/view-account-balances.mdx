@@ -35,9 +35,9 @@ examples:
     defaultValue="solo"
     values={[
         {label: 'Solo', value: 'solo'},
-        {label: 'Solo (ISCP)', value: 'soloctx'},
-        {label: 'Rust (ISCP)', value: 'rust'},
-        {label: 'Go (ISCP)', value: 'go'},
+        {label: 'Solo (Schema)', value: 'soloctx'},
+        {label: 'Rust (Schema)', value: 'rust'},
+        {label: 'Go (Schema)', value: 'go'},
     ]}>
 <TabItem value="solo">
 
@@ -92,9 +92,9 @@ returns:
     defaultValue="solo"
     values={[
         {label: 'Solo', value: 'solo'},
-        {label: 'Solo (ISCP)', value: 'soloctx'},
-        {label: 'Rust (ISCP)', value: 'rust'},
-        {label: 'Go (ISCP)', value: 'go'},
+        {label: 'Solo (Schema)', value: 'soloctx'},
+        {label: 'Rust (Schema)', value: 'rust'},
+        {label: 'Go (Schema)', value: 'go'},
     ]}>
 <TabItem value="solo">
 
@@ -103,11 +103,30 @@ balances:= chain.GetTotalAssets()
 ```
 
 </TabItem>
+<TabItem value="soloctx">
+
+```go
+b := coreaccounts.ScFuncs.TotalAssets(ctx)
+b.Func.Call()
+balances := b.Results.Balances()
+```
+
+</TabItem>
 <TabItem value="rust">
 
 ```rust
-let ret = ctx.call(ScHname::new("accounts"), ScHname::new("totalAssets") , None);
-let balances = ret.get_map(&KEY_BALANCES).immutable()
+let b = coreaccounts::ScFuncs::total_assets(ctx);
+b.func.call();
+let balances = b.results.balances();
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+b := coreaccounts.ScFuncs.TotalAssets(ctx)
+b.Func.Call()
+balances := b.Results.Balances()
 ```
 
 </TabItem>
@@ -127,9 +146,9 @@ returns:
     defaultValue="solo"
     values={[
         {label: 'Solo', value: 'solo'},
-        {label: 'Solo (ISCP)', value: 'soloctx'},
-        {label: 'Rust (ISCP)', value: 'rust'},
-        {label: 'Go (ISCP)', value: 'go'},
+        {label: 'Solo (Schema)', value: 'soloctx'},
+        {label: 'Rust (Schema)', value: 'rust'},
+        {label: 'Go (Schema)', value: 'go'},
     ]}>
 <TabItem value="solo">
 
@@ -138,12 +157,30 @@ accounts := chain.GetAccounts()
 ```
 
 </TabItem>
+<TabItem value="soloctx">
+
+```go
+a := coreaccounts.ScFuncs.Accounts(ctx)
+a.Func.Call()
+accounts := a.Results.Agents()
+```
+
+</TabItem>
 <TabItem value="rust">
 
 ```rust
-// TODO does this work?
-let ret = ctx.call(ScHname::new("accounts"), ScHname::new("accounts") , None);
-let account = ret.get_agent_id_array(&KEY_PARAMS)
+let a = coreaccounts::ScFuncs::accounts(ctx);
+a.func.call();
+let accounts = a.results.agents();
+```
+
+</TabItem>
+<TabItem value="go">
+
+```go
+a := coreaccounts.ScFuncs.Accounts(ctx)
+a.Func.Call()
+accounts := a.Results.Agents()
 ```
 
 </TabItem>
@@ -167,9 +204,9 @@ returns:
     defaultValue="solo"
     values={[
         {label: 'Solo', value: 'solo'},
-        {label: 'Solo (ISCP)', value: 'soloctx'},
-        {label: 'Rust (ISCP)', value: 'rust'},
-        {label: 'Go (ISCP)', value: 'go'},
+        {label: 'Solo (Schema)', value: 'soloctx'},
+        {label: 'Rust (Schema)', value: 'rust'},
+        {label: 'Go (Schema)', value: 'go'},
     ]}>
 <TabItem value="solo">
 

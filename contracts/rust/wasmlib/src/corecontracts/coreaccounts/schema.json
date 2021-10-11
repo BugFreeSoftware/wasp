@@ -18,7 +18,7 @@
   "views": {
     "accounts": {
       "results": {
-        "agents=this": "[AgentID]Bytes // bytes are always empty"
+        "accounts=this": "[AgentID]Bytes // bytes are always empty"
       }
     },
     "balance": {
